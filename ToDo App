@@ -1,0 +1,101 @@
+\\Class Task
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ToDo_App
+{
+    class Task
+    {
+        public string name { set; get; }
+        public void printname(string name)
+        {
+
+            Console.WriteLine(" The Named Task is : " + name);
+        }
+    }
+}
+
+
+\\Class TaskManager
+
+using System;
+using System.Collections;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ToDo_App
+{
+    public class TaskManager
+    {
+        private ArrayList collectionNames;
+
+        public TaskManager()
+        {
+            collectionNames = new ArrayList();
+        }
+
+        public void AddCollection(string collectionName)
+        {
+            collectionNames.Add(collectionName);
+        }
+
+        public void RemoveCollection(string collectionName)
+        {
+            collectionNames.Remove(collectionName);
+        }
+
+        public bool SearchCollection(string collectionName)
+        {
+            return collectionNames.Contains(collectionName);
+        }
+    }
+
+}
+
+
+\\Program
+
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ToDo_App
+{
+    public class Program
+    {
+        static void Main()
+        {
+            //print some Task
+            Task mytask = new Task();
+            mytask.printname("Restart my clint\n");
+
+
+            TaskManager mytaskes = new TaskManager();
+            // add some Task
+            mytaskes.AddCollection("install my windows 10 in my clint");
+            mytaskes.AddCollection("install my vmwere");
+            mytaskes.AddCollection("install Game Gta");
+
+
+            // search for a Task
+            Console.WriteLine("Is 'install Game Gta' in the tasks? " + mytaskes.SearchCollection("install my windows 10 in my clint"));
+
+            // remove a tasks
+            mytaskes.RemoveCollection("install Game Gta");
+            Console.WriteLine("THE Task HAS BEEN DELETED\n\n");
+
+            // search for a tasks again
+            Console.WriteLine("Is 'install Game Gta' in the tasks? " + mytaskes.SearchCollection("install Game Gta"));
+            Console.ReadKey();
+        }
+    }
+}
+
